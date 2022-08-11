@@ -25,3 +25,4 @@ print(sol.maxDepth(root = TreeNode([3,9,20,None,None,15,7])))
 
 
 # BFS for shortest path only pretty much
+#DFS - pop and extend
