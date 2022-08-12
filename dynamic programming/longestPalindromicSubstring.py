@@ -1,40 +1,25 @@
-def longestPalindrome(s):
-    """
-    :type s: str
-    :rtype: str
-    """
-    # does not work
-    counter = 0
-    where = 0
-    length = 0
-    total = ''
-    temp = ''
-    for letter in s: ## get it backwards
-        temp = letter + temp
-    for letter in s: ## try to find a palindrome for each letter that there is?
-        where = temp.find(letter) ## this si fucked up rn - need to find all of them
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        output = ""
+        i = 0
+        while i < len(s):
+            output = max(self.palin(s,i,i), self.palin(s,i,i+1), output, key=len)
+            #the two helpers are offset by 1!!!
+            i+=1
 
-        if (len(s) == 1):
-            return s
+        return output
+       
         
-        if (len(s) - where - 1) == counter:
-            counter += 1
-            continue
+    def palin(self,s,left,right):
+        while 0<=left and right < len(s) and s[left]==s[right]:
+                left-=1; right+=1
+        return s[left+1:right]
 
-        if ((temp[where : len(s) - counter]) == (s[counter : (len(s) - where)])) & (len(temp[where : len(s) - counter]) > length):
-            total = temp[where : len(s) - counter]
-            length = len(temp[where : len(s) - counter])
+sol = Solution()
+print(sol.longestPalindrome('babad'))
 
-        
-
-        counter += 1
-
-
-    if total == '':
-        return s[0]
-    else:
-        return total
-
-# NEED TO ACCOUNT FOR WHEN PALINDROME IS INSIDE STUFF
-
-print(longestPalindrome('superpieceofshit'))
+#for dynamic programming, offset by 1
