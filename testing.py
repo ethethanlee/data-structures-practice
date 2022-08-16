@@ -19,5 +19,6 @@
 # myList.add(0, 1)
 # if 0 in myList:
 #     print('hah')
-
-print('hello'[::-1])
+myList = [5,3,4,6,1]
+result = [item * 10 for item in myList]
+print(result)
