@@ -5,17 +5,17 @@ import java.util.Map;
 
 class Solution{
     public int[] twoSum(int[] numbers, int target) {
-        int[] result = new int[2];
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        int[] output = new int[2];
+        Map<Integer, Integer> hasher = new HashMap<Integer, Integer>();
         for (int i = 0; i < numbers.length; i++) {
-            if (map.containsKey(target - numbers[i])) {
-                result[1] = i;
-                result[0] = map.get(target - numbers[i]);
-                return result;
+            if (hasher.containsKey(target - numbers[i])) {
+                output[1] = i;
+                output[0] = hasher.get(target - numbers[i]);
+                return output;
             }
-            map.put(numbers[i], i);
+            hasher.put(numbers[i], i);
         }
-        return result;
+        return output;
     }
 
     public static void main(String[] args){
